@@ -27,8 +27,8 @@ class PrefixCleanup(Job):
             self.log_failure(f"Prefix {network} not in Nautobot database")
             
             new_prefix = Prefix(
-                prefix=network,
-                is_pool=False,
+                prefix= network,
+                is_pool= False,
                 status= STATUS_ACTIVE
             )
 
@@ -42,7 +42,7 @@ class PrefixCleanup(Job):
         for ip in IPAddress.objects.all():
             prefix = str(ipaddress.ip_network(ip, strict=False).network_address)
             if prefix not in all_nautobot_prefixes:
-                prefixes_to_add.append(prefix)
+                prefixes_to_add.append(f"{prefix}/{str(ip.prefix_length)}")
         
         # If the prefix_to_add list has anything in it, then run the
         # create_prefix function for each missing prefix
