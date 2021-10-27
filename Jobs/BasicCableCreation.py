@@ -29,13 +29,13 @@ class BasicCable(Job):
         # will fail:
         new_cable = Cable(
             termination_a= Interface.objects.get(
-                device__name="Core_Router_1",
-                name="GigabitEthernet2"
+                device__name= "Core_Router_1",
+                name= "GigabitEthernet2"
                 ),
 
             termination_b= Interface.objects.get(
-                device__name="Distro_Router_1",
-                name="GigabitEthernet1"
+                device__name= "Distro_Router_1",
+                name= "GigabitEthernet1"
                 ),
             
             status= Cable.STATUS_CONNECTED
